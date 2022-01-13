@@ -37,9 +37,6 @@ def main():
 
             game_over = check_game_status(grid_list, turns)
 
-
-
-
 def print_grid(grid_list):
 
     print(f"\n {grid_list[0]} | {grid_list[1]} | {grid_list[2]}")
@@ -50,19 +47,18 @@ def print_grid(grid_list):
 
 def check_game_status(grid_list, turns):
     
-    if grid_list[0:3] == "x" or grid_list[0:3] == "o" \
-    or (grid_list[0] == "x" and grid_list[3] == "x" and grid_list[6] == "x") \
-    or (grid_list[0] == "o" and grid_list[3] == "o" and grid_list[6] == "o") \
-    or (grid_list[0] == "x" and grid_list[4] == "x" and grid_list[8] == "x") \
-    or (grid_list[0] == "o" and grid_list[4] == "o" and grid_list[8] == "o") \
-    or (grid_list[1] == "x" and grid_list[4] == "x" and grid_list[7] == "x") \
-    or (grid_list[1] == "o" and grid_list[4] == "o" and grid_list[7] == "o") \
-    or (grid_list[2] == "x" and grid_list[5] == "x" and grid_list[8] == "x") \
-    or (grid_list[2] == "o" and grid_list[5] == "o" and grid_list[8] == "o") \
-    or (grid_list[2] == "x" and grid_list[4] == "x" and grid_list[6] == "x") \
-    or (grid_list[2] == "o" and grid_list[4] == "o" and grid_list[6] == "o") \
-    or grid_list[3:7] == "x" or grid_list[3:7] == "o" \
-    or grid_list[6:-1] == "x" or grid_list[6:-1] == "o":
+    # I originally had this if statement written differently; it was much longer
+    # and needlessly complicated. I implemented the if statement from the solution
+    # program to improve mine. 
+
+    if grid_list[0] == grid_list[1] == grid_list[2] \
+    or grid_list[3] == grid_list[4] == grid_list[5] \
+    or grid_list[6] == grid_list[7] == grid_list[8] \
+    or grid_list[0] == grid_list[3] == grid_list[6] \
+    or grid_list[1] == grid_list[4] == grid_list[7] \
+    or grid_list[2] == grid_list[5] == grid_list[8] \
+    or grid_list[0] == grid_list[4] == grid_list[8] \
+    or grid_list[2] == grid_list[4] == grid_list[6]:
         print("Good game. Thanks for playing!")
         return True
     elif turns == 9:
@@ -70,12 +66,6 @@ def check_game_status(grid_list, turns):
         return True
     else:
         return False
-        
-
-
-        
-
-    pass
 
 if __name__ == "__main__":
     main()
